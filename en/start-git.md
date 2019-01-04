@@ -4,7 +4,7 @@ In the software industry, every software goes through several versions during it
 
 ## Version Control
 
-Also known as 'revision control' or 'versioning', is a process to delegate the modifications tracking to a piece of software that will monitor every changes made to a project. Contributors can then read an history of those changes, get information about who did it and when, and eventually revert back to a former state of the project.
+Also known as 'revision control' or 'versioning', it's a process to delegate the modifications tracking to a piece of software that will monitor every changes made to a project. Contributors can then read an history of those changes, get information about who did it and when, and eventually revert back to a former state of the project.
 
 As these softwares has to be consciously manipulated by contributors, version control induce a workflow that has to be agreed upon amongst the team and that each collaborator will eventually have to learn. And I insure you that you will have great benefits to start learning the basics right now, whatever your level in programming actually is.
 
@@ -27,12 +27,12 @@ I've never used Git on a Mac (in fact, I've never used anything on a Mac ...) so
 
 Let's start by some basics. I've said that you can apply version control to much more than programming projects, I'll use my blog posts as an example.
 
-The reason why you're able to use Git with either source code or plain text posts is because what Git care about could be summarized as, in Git words :
+The reason why we're able to use Git with either source code or plain text posts is because what Git care about could be summarized as, in Git words :
 
-- trees (folders/directory) : the structural parts of the project, trees contains either other trees (sub-trees) or:
-- blobs (files) : the parts of the project that gives it a point, files can be either binaries or text files, but Git works a lot better with the later, see the explication below.
+- *trees* (folders/directory) : the structural parts of the project, trees contains either other trees (sub-trees) or:
+- *blobs* (files) : the parts of the project that gives it a point, files can be either binaries or text files, but Git works a lot better with the later.
 
-Here a representation of my folders structure:
+Here a representation of my folders' structure:
 
     blog-posts
 		|- en
@@ -41,24 +41,25 @@ Here a representation of my folders structure:
 		|-fr
 		||- some-post-translated.md
 
-I want Git to track the totality of my blog posts, as I consider my project to be the blog and not each individual post. To do that, I start a terminal/git bash prompt in the folder "blog-posts" (you can do that by right clicking usually). To be sure that I'm in the correct folder, I type the command `ls` and I shall see my two sub-folders "en" and "fr". Then I start a Git project with the command `git init`.
+I want Git to track the totality of my blog posts, as I consider my project to be the blog and not each individual post. To do that, I start a terminal/git bash prompt in the folder "blog-posts" (you can do that by right clicking usually). To be sure that I'm in the correct folder, I type the command `ls` and I shall see my two sub-folders "en" and "fr". Then I start a Git project with the command :
 
-The terminal then informs you that you have successfully initialized a git project, but you don't see no changes if you look at you file explorer, right? That's because all the Git relatives files have been stored in a hidden folder labeled ".git". To see it you can use the command `ls` but with the option "a" (for "all", I suppose), so type `ls -a`.
+    git init
 
-This folder contains a complete copy of your project in the state it was when you initialized it, which should be the same state as it actually is. To make sure of that, you can use the command `git status` and the terminal should answer you that "nothing changed".
+The terminal then informs me that I have successfully initialized a git project, but I don't see no changes if I look at it in my file explorer... That's because all the Git relatives files have been stored in a hidden folder labeled ".git". To see it I can use the command `ls` but with the option "a" (for "all", I suppose), so I type `ls -a`.
 
-A complete copy of the project in the exact same state doesn't look like a bright idea, does it? You should loose an awful lot of space by duplicating every project like this... Well don't worry for that, everything in the ".git" folder is compressed to optimize space and the files are really small in fact. And to be exact, that's not one copy that you have in this folder, but actually two! There is:
+This folder contains Git's data related to this project, such as a very important part of Git that is the *index*. In time, this will be a complete copy of my project which will store every changes I want to keep permanently, but as I just initialized my *repository*, it is totally empty. I can view the differences between the version I'm working on, which is called in Git terms the *working tree* (sometimes called the *working directory* as well) and the *index* by typing the command:
 
-- the project in it's last state (the *HEAD*)
-- the changes about to be stored (the *index*)
+    git status
 
-And if you had the actual directory in which you are working (the ... *working directory*), that's three times the same project in the same place. And more copies will be coming each time you will make a modification to the files! That's how it goes in the version control world, you don't just update your work, but create new copies of it each time you want to make a modification. Still don't worry with space consumption though, Git is smart and optimize it very nicely.
+Yes, right now, both *trees* are totally different. That's normal as I just initialized a *git repository*, because Git only does its magic while I ask it to do so, good puppy.
+
+You may wonder if a complete copy of the project is a bright idea, don't you? We should loose an awful lot of space by duplicating every project like this... Well don't worry for that, everything in the ".git" folder is compressed to optimize space and the files are really small in fact. And in fact there will be many more copies of the project as I start to *version* it! Let's see how it goes:
 
 ## Basic Git workflow
 
-To summarize the three trees talked just above, I made you a little scheme. These trees are crucial in understanding the internal working of Git.
+Okay, to summarize what we've talked about so far, here is a little scheme :
 
-![Three trees monitored by Git](start-git-fig01.svg)
+![Three trees monitored by Git](start-git-fig01.png)
 
 As you can see, both trees are almost exactly the same, except that, as I'm actually writing this post, it appears in the *working directory*. I've had put quite some content in this post to this point, I feel I should store the modifications to the project right now (in fact, I should have had as soon as I started writing).
 
@@ -68,11 +69,15 @@ If I use the `git status` command at this point, Git will inform me that it have
 
 Now, if I type `git status` again, Git will inform me that the file "start-git.md" has been added to the index, and is ready to be *committed*. That last word should have raised your curiosity, otherwise you are not paying attention, shame on you! So refocus, because you gonna hear this word in almost every line you gonna read about Git from that point.
 
+![The index tree is updated](start-git-fig02.png)
+
 The *commits* are the copies of your project that Git keeps for you. You can think of these as "snapshots", once you've *committed* your work, a new copy of your project is created and it is \*almost\* set in stone. To *commit* (I've said you gonna hear this word a lot!) my work, I type:
 
   git commit
 
-Okay, I should explain this command a little more in details: you now understand the word *commit*, even if you don't realize everything it implies, just remember it creates a copy **of the index tree**. So because I added my file to the *index* with the former command (remember, `git add`), Git understood what *blobs* I wanted to *commit* when I typed this command.
+Okay, I should explain this command a little more in details: you may guess now what the word "commit" stand for, even if you don't realize everything it implies, just remember it creates a copy **of the index tree**. So because I added my file to the *index* with the former command (remember, `git add`), Git understood what *blobs* I wanted to *commit* when I typed this command.
+
+![The changes have been committed](start-git-fig03.png)
 
 As you're smart and attentive, you have realized that I wrote a little more text between the moment I added changes to the *index*, and the moment I made my *commit*. You probably think that this text couldn't have been added in the *commit*, since the *index* hasn't been updated to include it... and you're totally right! To inspect the content of the last *commit* I type:
 
@@ -82,9 +87,52 @@ Then I can read the changes that have been *committed*, those written in green a
 
 ***Note:*** _When using `git show`, your terminal will be in reading mode, that lets you goes up and down the document with your keyboard's arrows, you can quit this mode by hitting 'q'._
 
-## Going on
+## The Git goes on
 
 I bet that not everything is cristal clear for you at the moment and you may still have unanswered questions that have rose from what I wrote previously. But as I wrote a little more since my last committed work, let's *commit* these changes:
 
     git add en/start-git.md
 		git commit -m "New chapter 'Going on'"
+
+What's that `-m` followed by a message? You may ask. That is a ... **message**. Yup, that's all it is, me writing for myself in order to remember what I committed. Because I have now two *commits* and will have several more as the project goes on, so I better start writing what I did in each *commit*. I can visualize my *commit* history in my terminal by typing:
+
+    git log
+
+And this is what Git shows me:
+
+		commit b6a083df24f44af9d2fa6423108ae58669245297
+		Author: raaaahman <contact@devindetails.com>
+		Date:   Mon Oct 15 12:35:44 2018 +0200
+
+		    New chapter 'Going on'
+
+		commit 7aaca9131ea03d129380edc68f946e19d2c017d8
+		Author: raaaahman <contact@devindetails.com>
+		Date:   Sun Oct 14 14:42:28 2018 +0200
+
+Let's review what we have here. This is a list of *commits*, it is sorted by descending date order. For each *commit* you have several informations:
+- It's **SHA-1**: this is an unique identifier for this *commit*, it is automatically generated.
+- The **author**'s name and e-mail, so we know who committed the changes.
+- The **date** when the changes were committed
+- Eventually, the **message** that the author have written so anyone can know whats were the changes about
+
+At the moment this is a simple blog post written by a single author and only two commits have been added. I can postpone that each *commit* will be about me adding more text to the post and things will be simple and linear. But in a larger project, with numerous features and several *authors*, you can imagine how important it is that each *author* should write **explicit messages** each time she commits some changes, so her collaborators won't have to inspect the files to know what were the changes about.
+
+On that matter, I couldn't resist to present you the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) initiative, which is an interesting idea to rationalize and normalize commits messages. This may seem a bit too directive when you just start to write your first *commits*, but you may quickly see the benefits of adopting it right of the bat (or your colleagues may appreciate you even more for it). I'll try to give you an overview of what it is about:
+
+Like a well organized article, *conventional commit*'s messages are composed of a *header*, a *body*, and a *footer*. The header contains a label that indicate the **type** of the commit, and a short **description** of what this commit is about. The *type* is a quick way to categorize the kind of work that have been done, like adding a feature, fixing some bug or adding documentation to the existing code, while the *description* tell where this work have been applied and what changes it introduces.
+
+Basically, I can stop my commits messages at this stage, and most commits messages should be that short. Because Git is a smart***, and it already knows every change I've made to my project. But Git is gullible, and if I ask nicely, it will display me the changes. I'm gonna ask it like that:
+
+ 		git show
+
+Now Git outputted in my terminal every change I've made in it's habitual fashion (that's said, lines deleted start with a "-" and are colored in red, and lines added start with a "+" and are colored in green, it also show some unmodified lines just to give context around the modified ones). As I've made several grammar corrections here and there, I can't show you the whole log, because it's quite long, but I'll give you an overview:
+
+![The result of the command 'Git show' in my terminal](assets/start-git-en-04_show.png)
+
+Okay, that should do for another chapter, so guess what I'll do now? Right, I will commit it to my project.
+
+		git add en/start-git.md
+		git commit -m "Chapter 'Git goes on' finished"
+
+***Note**: As an attentive reader, you have noticed that I didn't write my commits messages using the conventional commits ... conventions. Albeit I've adopted it in my programming projects, I feel it makes a little sense in the context of a blog. That's a preference and that's usually something that have to be discussed among a team. Feel free to read a bit more about these writing rules, they are light but I haven't told you them all, neither have I listed all their benefits.*
