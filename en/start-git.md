@@ -135,7 +135,7 @@ Okay, that should do for another chapter, so guess what I'll do now? Right, I wi
 		git add en/start-git.md
 		git commit -m "Chapter 'Git goes on' finished"
 
-***Note:*** _As an attentive reader, you have noticed that I didn't write my commits messages using the conventional commits ... conventions. Albeit I've adopted it in my programming projects, I feel it makes a little sense in the context of a blog. That's a preference and that's usually something that have to be discussed among a team. Feel free to read a bit more about these writing rules, they are light but I haven't told you them all, neither have I listed all their benefits._
+***Note:*** _As an attentive reader, you have noticed that I didn't write my commits messages using the conventional commits ... conventions. Albeit I've adopted it in my programming projects, I feel it makes doesn't really makes sense in the context of a blog. That's a preference and that's usually something that have to be discussed among a team. Feel free to read a bit more about these writing rules, they are light but I haven't told you them all, neither have I listed all their benefits._
 
 ## Getting fancy
 
