@@ -87,42 +87,28 @@ Ensuite, je peux lire les changements qui ont été *commité*, les lignes écri
 
 ***Remarque :*** _lorsque vous utilisez `Git show`, votre terminal sera en mode lecture, ce qui vous permet de monter et descendre le document avec les flèches de votre clavier, vous pouvez quitter ce mode en appuyant sur "q"._
 
-## Le Git continue
+## Persévérer avec Git
 
+Je parie que tout n'est pas clair pour vous en ce moment et vous pouvez avoir des questions qui restent sans réponse. Mais comme j'ai écrit encore un peu depuis mon dernier commit, je vais ajouter ces changements dans un nouveau commit:
 
+		git add fr/start-git.md
+    git commit -m "nouveau chapitre en cours"
 
-Je parie que tout n'est pas clair pour vous en ce moment et vous pouvez encore avoir des questions sans réponse qui ont augmenté de ce que j'ai écrit précédemment. Mais comme je l'ai écrit un peu plus depuis mon dernier travail engagé, nous allons* commet*tre ces changements:
+Qu'est-ce que signifie `-m` suivi d'un message? Vous pourriez vous demander. Eh bien c'est un ... **message**. Ouais, c'est tout, simplement une message pour moi-même, afin de me rappeler ce que j'ai commité. Parce que j'ai maintenant deux *commits* dans mon projet, et qu'il y en aura, à terme, bien plus. Je ferais donc mieux de commencer à écrire ce que j'ai ajouté dans chaque commit. Je peux visualiser mon *historique* des commits dans mon terminal en tapant:
 
+		log git
 
+Et voilà ce que Git me montre:
 
-		Git Add fr/Start-Git. MD
-    Git commit-m "nouveau chapitre" en cours "
-
-
-
-Qu'est-ce que `j'`ai suivi d'un message? Vous pouvez demander. C'est un mes**sage...**. Yup, c'est tout ce qu'il est, moi d'écrire pour moi-même afin de se rappeler ce que j'ai commis. Parce que j'ai maintenant de*ux commit* et aura plusieurs autres que le projet continue, donc je ferais mieux de commencer à écrire ce que j'ai fait dans chaqu*e commi*t. Je peux visualiser mon *histori*que de Commit dans mon terminal en tapant:
-
-
-
-		log Git
-
-
-
-Et c'est ce que Git me montre:
-
-
-
-		    Commit b6a083df24f44af9d2fa6423108ae58669245297
+    Commit b6a083df24f44af9d2fa6423108ae58669245297
     Auteur: raaaahman&lt;contact@devindetails.com>&lt;/contact@devindetails.com>
     Date: Lun Oct 15 12:35:44 2018 + 0200
 
-        Nouveau chapitre «going on»
+    Nouveau chapitre «Persévérer avec Git»
 
     Commit 7aaca9131ea03d129380edc68f946e19d2c017d8
     Auteur: raaaahman&lt;contact@devindetails.com>&lt;/contact@devindetails.com>
     Date: Dim Oct 14 14:42:28 2018 + 0200
-
-
 
 Passons en revue ce que nous avons ici. Il s'aGit d'une liste *de valida*tions, elle est triée par ordre décroissant de date. Pour chaqu*e comm*it vous avez plusieurs informations:
 
