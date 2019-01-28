@@ -138,50 +138,28 @@ Bien, ça devrait suffire pour ce chapitre, vous devinez ce que je vais faire ma
 
 ***Remarque:*** _En tant que lecteur attentif, vous avez remarqué que je n'ai pas écrit mes messages de commit en utilisant les règles des conventional commits... Bien que je les ai adoptées dans mes projets de programmation, je pense qu'elles n'ont pas autant de sens dans le contexte d'un blog. C'est une préférence et c'est habituellement quelque chose qui doit être discuté au sein d'une équipe. N'hésitez pas à lire un peu plus sur ces règles d'écriture, elles sont légères, même s'il y a plus que ce que je vous ai brièvement résumés, et je n'ai pas non plus énuméré tous leurs avantages._
 
-## Obtenir fantaisie
+## Dompter Git
 
+La dernière commande que j'ai utilisée (`git show`) a été en mesure de me montrer les changements que j'ai fait dans mon dernier commit. C'est une fonctionnalité pratique, mais comme je vous ai montré avec la commande précédente (`git log`), le projet contient plus d'un commit, et j'en ai ajouté un nouveau depuis que j'ai tapé ces commandes. Alors, comment puis-je voir ce que j'ai inclus dans mes précédents commits?
 
+Une solution serait d'utiliser `git log`, copier le *SHA-1* (rappelez-vous, l'identifiant unique de chaque commit) d'un commit spécifique et puis de le coller après la commande `git show`, comme ceci:
 
-La dernière commande que j'ai utili`sé (Git sho`w) a été en mesure de me montrer le changement que j'ai fait dans mon dernier COMMIT. C'est une fonctionnalité cool, mais comme je vous ai montré dans une ancienn`e comman`de (Git log), le projet contient plus d'un commit, et j'ai ajouté un nouveau depuis que j'ai tapé ces commandes. Alors, comment puis-je voir ce que j'ai commis dans les précédentes validations?
+		log git
+    git show 3bba4ec8f814f84ea8782f014b01da81e6cfabde
 
+Ainsi, je peux voir tous les changements qui ont été inclus dans ce commit. C'est l'utilité de l'identifiant *SHA-1*, il est généré par Git et est assuré d'être absolument unique, de sorte que Git puisse récupérer un commit spécifique, même si mon projet en avait contenu des milliers (et j'espère que ce sera le cas!).
 
+Mais cette suite de chiffres hexadécimaux est loin d'être facile à retenir pour les êtres humains, n'est-ce pas? (Oui, en notation hexadécimale, les lettres de «a» à «f» sont aussi des chiffres!) Ne vous inquiétez pas, il existe des moyens plus simples pour récupérer les mêmes informations, comme cette commande:
 
-Une solution serait de Git l`og mes `validations, copier le SH*A-1 (n*'oubliez pas, l'identificateur unique pour la validation) pour cette validation spécifique et puis collez-le à l`a command`e Git show, comme ceci:
+		git show HEAD~1
 
+Son effet est de montrer les modifications inclues dans l'avant-dernier commit. Peut-être êtes-vous perplexe devant la syntaxe utilisée ici? En fait, vous avez rencontré le quatrième objet fondamental de Git, qui est une **ref** (souvenez-vous, nous avions déjà des *arbres (tree)* -structures de dossiers-, les *blobs* -fichiers binaires/texte- et les *commits*). Les *refs* n'existe pas vraiment par elles-mêmes, mais au lieu de cela, elles **référencent** un autre objet Git afin que nous, les utilisateurs de Git, puissions accéder à ces objets avec une notation plus facile que le *SHA-1*.
 
+La *ref* **HEAD** est très utile, car elle pointe vers le **dernier commit** ajouté au *dépôt*. Mais entrer `git show HEAD` serait assez inutile, puisque `git show` affiche déjà la sortie du dernier commit si aucun argument ne lui est passé.
 
-		log Git
-Git show 3bba4ec8f814f84ea8782f014b01da81e6cfabde
+A la place, j'ai indiqué à Git que je voulais aller un commit en arrière de ce *HEAD*, par le biais de syntaxe `~1`. Vous avez probablement deviné que je peux revenir en arrière d'autant de commits que je le souhaite (dans la mesure où mon projet en contient assez), en tapant `git show HEAD~2`, `git show HEAD~3`, etc. Si cela est utile pour la commande `Git show`, ça l'est également pour plusieurs autres commandes que je ne vais pas énumérer ici (principalement parce que je ne les connais ni toutes ni très bien, et aussi parce que je ne peux pas vous enseigner la totalité de Git dans un seul billet de blog).
 
+En parlant de la longueur de cet article, je pense que vous devez déjà avoir une bonne quantité d'informations à assimiler à ce point (ou ne serait-ce qu'une excuse pour ne pas écrire plus?). Je vais donc vous laisser pratiquer ces quelques commandes pour l'instant. J'espère que je vous ai motivé à faire vos premiers pas avec Git, parce que je pense que c'est un outil crucial dans le travail quotidien du développeur, et peut-être qu'il pourra vous épargner quelques tracas. Evidemment, je suis loin d'avoir couvert ne serait-ce que les usages les plus communs de Git dans cet unique article, et j'en écrirais probablement d'avantage plus tard, alors restez à l'affût! Mais avant de partir, vous avez deviné ce que je vais faire:
 
-
-Et je peux voir tous les changements qui ont été commis dans ce commit. C'est l'utilité de l'identifica*teur *SHA-1, il est généré par Git et est assuré pour être absolument unique, de sorte que Git peut récupérer la validation spécifique, même si mon projet aurait contenu des milliers d'entre eux (et j'espère qu'il sera à l'avenir!).
-
-
-
-Mais cette suite de nombres hexadécimaux est loin d'être facile à retenir par les êtres humains, ne trouvez-vous pas? (Oui, en notation hexadécimale, les lettres de «a» à «f» sont aussi des nombres!) Ne vous inquiétez pas, il existe des moyens plus simples pour récupérer les mêmes informations, comme cette commande:
-
-
-
-		TÊTE de Show Git ~ 1
-
-
-
-Ce que cela fait est qu'il va produire les modifications commises dans la validation précédant la dernière. Mais vous pouvez encore être confus par la syntaxe utilisée ici, n'est-ce pas? En fait, vous avez rencontré le quatrième objet fondamental de Git, qui est un REF (souven**ez-**vous que nous avons déjà des arb*res-st*ructures de dossiers-, blo*bs-fic*hiers binaires/texte-et les va*lidation*s). *REFS* n'existe pas vraiment par eux-mêmes, mais au lieu de cela, ils réfé**rencent un **autre objet Git afin que nous, les utilisateurs, peuvent accéder à ces objets avec une notation plus facile qu*e SHA-*1.
-
-
-
-Le R*EF *H**EAD **est très utile, car il pointe essentiellement vers le dernier **COMMIT que vous avez fai**t.  Mais taper g`it show HEAD s`erait assez inutile, puisque Git mo`ntrent d`éjà la sortie de la dernière commit si aucun argument n'est passé à lui.
-
-
-
-Ce que j'ai fait à la place a été de mentionner que je voulais aller un commit en arrière de la tête, qui est ce que la sy`nt`axe ~ 1 signifie. Vous avez probablement deviné que je peux revenir dans la mesure où mon projet contient des validations en tapan`t Git show HEAD ~ 2`, `Git montrer HEAD ~` 3, etc. Cela utile pour la comma`nde Git s`how, mais à une multitude d'autres commandes que je ne vais pas énumérer ici (principalement parce que je ne les connais pas tous ou très bien, et aussi parce que je ne peux pas vous enseigner la totalité de Git dans un seul billet de blog).
-
-
-
-En parlant de la longueur du blog, je pense que vous pouvez avoir la quantité d'informations à traiter à ce point (ou peut-être je me sens paresseux pour écrire un peu plus), donc je vais vous laisser jouer avec cela pour l'instant. J'espère que je vous ai motivé à faire votre premier pas avec Git, parce que je pense que c'est un outil crucial dans un travail quotidien de développeur, et peut-être qu'il peut sauver quelques tracas pour d'autres emplois trop. Je peux écrire un peu plus à ce sujet, comme je suis loin d'avoir couvert même ses usages les plus communs dans ce poste unique, alors restez à l'écoute! Mais avant de partir, vous avez deviné ce que:
-
-
-
-		    Git Add fr/Start-Git. MD
-    Git commit-m "chapitre'obtenir fantaisie'fini"
+    git add fr/start-git.md
+    git commit -m "chapitre 'Dompter Git' terminé"
