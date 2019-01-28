@@ -1,6 +1,6 @@
-# Se lancer dans le versioning avec Git
+# Commencer à versionner avec Git
 
-Dans le monde du développement, les applications connaissent un bon nombre de versions au cours de leur cycle de vie. Comment alors garder efficacemment l'historique et archiver les anciennes versions ? Bien sûr, on pourrait garder une collection de fichiers *.zip*, mais il y a une manière bien plus efficace de procéder, elle cette technique peut être appliquer à d'autres activités que le développement:
+Dans le monde du développement, les applications connaissent un bon nombre de versions au cours de leur cycle de vie. Comment alors garder efficacement l'historique et archiver les anciennes versions ? Bien sûr, on pourrait garder une collection de fichiers *.zip*, mais il y a une manière bien plus efficace de procéder, elle cette technique peut être appliquer à d'autres activités que le développement:
 
 ## Le versioning
 
@@ -94,11 +94,11 @@ Je parie que tout n'est pas clair pour vous en ce moment et vous pouvez avoir de
 		git add fr/start-git.md
     git commit -m "nouveau chapitre en cours"
 
-Qu'est-ce que signifie `-m` suivi d'un message? Vous pourriez vous demander. Eh bien c'est un ... **message**. Ouais, c'est tout, simplement une message pour moi-même, afin de me rappeler ce que j'ai commité. Parce que j'ai maintenant deux *commits* dans mon projet, et qu'il y en aura, à terme, bien plus. Je ferais donc mieux de commencer à écrire ce que j'ai ajouté dans chaque commit. Je peux visualiser mon *historique* des commits dans mon terminal en tapant:
+Que signifie `-m` suivi d'un message? Eh bien c'est un ... **message**. Ouais... c'est tout, simplement une message pour moi-même, afin de me rappeler ce que j'ai commité. Parce que j'ai maintenant deux *commits* dans mon projet, et qu'il y en aura, à terme, bien plus. Je ferais donc mieux de commencer à écrire ce que j'ai ajouté dans chaque commit. Je peux visualiser mon *historique* des commits dans mon terminal en tapant:
 
-		log git
+		git log
 
-Et voilà ce que Git me montre:
+Et voilà ce que Git me répond:
 
     Commit b6a083df24f44af9d2fa6423108ae58669245297
     Auteur: raaaahman&lt;contact@devindetails.com>&lt;/contact@devindetails.com>
@@ -110,58 +110,33 @@ Et voilà ce que Git me montre:
     Auteur: raaaahman&lt;contact@devindetails.com>&lt;/contact@devindetails.com>
     Date: Dim Oct 14 14:42:28 2018 + 0200
 
-Passons en revue ce que nous avons ici. Il s'aGit d'une liste *de valida*tions, elle est triée par ordre décroissant de date. Pour chaqu*e comm*it vous avez plusieurs informations:
+Passons en revue ce que nous avons ici. Il s'agit d'une liste de *commits*, elle est triée par ordre décroissant de date. Pour chaque *commit* vous avez plusieurs informations:
 
+- Le **SHA-1**: il s'agit d'un identifiant unique pour ce commit, il est généré automatiquement.
+- Le pseudonyme de l'**auteur** du commit et son e-mail, afin que nous savons qui a effectué ces changements.
+- La **date** à laquelle les modifications ont été commitées
+- Finalement, le **message** que l'auteur a écrit afin que n'importe qui puisse savoir quels ont été les changements sur le projet
 
+Pour le moment, il s'agit d'un simple billet de blog écrit par un seul auteur et seulement deux commits ont été ajoutées. Je peux imaginer que chaque *commit* correspondra simplement à un ajout de texte de ma part, ce qui sera très  linéaire. Mais dans un projet plus vaste, avec de nombreuses fonctionnalités et plusieurs *auteurs*, vous pouvez imaginer combien il est important que chaque *auteur* écrive des **messages explicites** chaque fois qu'il/elle commit des changements, de sorte que ses collaborateurs n'aient pas à inspecter les fichiers pour savoir ce dont il retourne.
 
+Sur ce point, je ne pouvais pas résister à vous présenter l'initiative <a href="https://www.conventionalcommits.org/en/v1.0.0-beta.2/"> conventional commits </a>, qui est une idée intéressante pour rationaliser et normaliser les *messages* des commits. Cela peut sembler un peu trop directif si vous venez de commencer à écrire vos premiers commits, mais vous pouvez rapidement voir les avantages de l'adopter immédiatement (vos collègues peuvent également l'apprécier grandement). Je vais essayer de vous donner un aperçu de ce dont il s'agit:
 
-- C'est** SHA-1**: il s'aGit d'un identificateur unique pour cet*te vali*dation, il est généré automatiquement.
-- Le n**om de l'**auteur et l'e-mail, afin que nous savons qui a commis les changements.
-- Date **à laq**uelle les modifications ont été commises
-- Finalement, le me**ssage qu**e l'auteur a écrit afin que n'importe qui peut savoir Whats ont été les changements sur
+Comme un article bien organisé, les messages au format *conventional commits* sont composés d'un **en-tête**, d'un **corps** et d'un **pied de page**. L'*en-tête* contient une étiquette qui indique le **type de commit** et une brève description de ce qu'a modifié ce commit. Le *type* est un moyen rapide de catégoriser le travail qui a été effectué, comme l'ajout d'une fonctionnalité, la correction d'un bug ou l'ajout de documentation au code existant, tandis que la *description* indique un peu mieux où ce travail a été appliqué et quelles modifications il introduit.
 
+Fondamentalement, je pourrais arrêter mes *messages* de commit à ce stade, et la plupart des messages de commit devraient être aussi court. Parce que Git est un petit malin, et il connaît déjà tous les changements que j'ai apportés à mon projet. Mais Git est docile, et si je lui demande gentiment, il va m'afficher ces changements. Je vais le lui demander comme ça:
 
+    git show
 
-Pour le moment, il s'aGit d'un simple billet de blog écrit par un seul auteur et seulement deux validations ont été ajoutées. Je peux différer que chaque* commit* sera sur moi en ajoutant plus de texte à la poste et les choses seront simples et linéaires. Mais dans un projet plus vaste, avec de nombreuses fonctionnalités et plusieu*rs auteur*s, vous pouvez imaginer combien il est important que chaque au*teur doi*t écrire des messa**ges explicites chaque **fois qu'elle commet quelques changements, de sorte que ses collaborateurs n'auront pas à inspecter les fichiers pour savoir ce qui étaient les changements à propos.
-
-
-
-Sur ce point, je ne pouvais pas résister à vous présenter l'ini<a href="https://www.conventionalcommits.org/en/v1.0.0-beta.2/">tiative des validations </a>conventionnelles, qui est une idée intéressante pour rationaliser et normaliser les messages de validation. Cela peut sembler un peu trop directive lorsque vous venez de commencer à écrire vos premièr*es valida*tions, mais vous pouvez rapidement voir les avantages de l'adopter à droite de la chauve-souris (ou vos collègues peuvent vous apprécier encore plus pour elle). Je vais essayer de vous donner un aperçu de ce dont il s'aGit:
-
-
-
-Comme un article bien organisé, les mes*sages de la validation c*onventionnelle sont composés d'un en-t*ête, d'*un co*rps et* d'un pied* de pag*e. L'en-tête contient une étiquette qui indique le type** de **la validation et une brève descr**iption de ce** que cette validation est à propos. Le t*ype e*st un moyen rapide de catégoriser le type de travail qui ont été effectués, comme l'ajout d'une fonctionnalité, la correction d'un bug ou l'ajout de documentation au code existant, tandis que* la descript*ion indiquent où ce travail ont été appliqués et quelles modifications il introduit.
-
-
-
-Fondamentalement, je peux arrêter mes messages de Commit à ce stade, et la plupart des messages de Commit devraient être ce court. Parce que Git est un Smart * * *, et il connaît déjà tous les changements que j'ai apportés à mon projet. Mais Git est crédule, et si je demande gentiment, il va m'afficher les changements. Je vais le demander comme ça:
-
-
-
-		     Git show
-
-
-
-Maintenant Git sortie dans mon terminal chaque changement que j'ai fait dans sa mode habituelle (qui est dit, les lignes supprimées commencent par un "-" et sont colorées en rouge, et les lignes ajoutées commencent par un "+" et sont colorées en vert, il montre également quelques lignes non modifiées juste pour donner un contexte autour de la  modifiés). Comme j'ai fait plusieurs corrections grammaticales ici et là, je ne peux pas vous montrer le journal entier, parce que c'est assez long, mais je vais vous donner un aperçu:
-
-
+Maintenant Git imprime dans mon terminal chaque changement que j'ai fait de sa manière habituelle (c'est-à_dire, les lignes supprimées commencent par un "-" et sont colorées en rouge, et les lignes ajoutées commencent par un "+" et sont colorées en vert, il montre également quelques lignes non modifiées juste pour donner un contexte autour de celles  modifiées). Comme j'ai fait plusieurs corrections grammaticales ici et là, je ne vais pas vous montrer l'intégralité des logs, ce serait trop long, mais je vais vous tout de même vous montrer un aperçu:
 
 <figure class="wp-block-image"><img src="https://devindetails.com/wp-content/uploads/2019/01/start-Git-en-04_show.png" alt="" class="wp-image-92"/></figure>
 
+Bien, ça devrait suffire pour ce chapitre, vous devinez ce que je vais faire maintenant? Exact, je vais le commiter dans mon projet.
 
+		git add fr/start-git.md
+    git commit-m "chapitre 'Persévérer avec git' terminé"
 
-OK, ça devrait faire pour un autre chapitre, alors devinez ce que je vais faire maintenant? Bien, je vais l'engager dans mon projet.
-
-
-
-		    Git Add fr/Start-Git. MD
-    Git commit-m "chapitre" Git va sur "terminé"
-
-
-
-***Remar***q*ue: en tant que lecteur attentif, vous avez remarqué que je n'ai pas écrit mes messages de Commit en utilisant les conventions conventionnelles... Bien que je l'ai adopté dans mes projets de programmation, je pense qu'il fait n'est pas vraiment logique dans le contexte d'un blog. C'est une préférence et c'est habituellement quelque chose qui doit être discuté au sein d'une équipe. N'hésitez pas à lire un peu plus sur ces règles d'écriture, ils sont légers, mais je ne vous ai pas dit tous, ni ai-je énuméré tous leurs avantages.*
-
-
+***Remarque:*** _En tant que lecteur attentif, vous avez remarqué que je n'ai pas écrit mes messages de commit en utilisant les règles des conventional commits... Bien que je les ai adoptées dans mes projets de programmation, je pense qu'elles n'ont pas autant de sens dans le contexte d'un blog. C'est une préférence et c'est habituellement quelque chose qui doit être discuté au sein d'une équipe. N'hésitez pas à lire un peu plus sur ces règles d'écriture, elles sont légères, même s'il y a plus que ce que je vous ai brièvement résumés, et je n'ai pas non plus énuméré tous leurs avantages._
 
 ## Obtenir fantaisie
 
