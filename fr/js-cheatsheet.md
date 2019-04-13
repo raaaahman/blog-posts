@@ -1,4 +1,6 @@
-# Débuter en JavaScript
+# Les bases de Javascript
+
+Plutôt qu'un tutoriel, cet article est une anti-sèche sur les fondamentaux du langage **JavaScript**. Je l'ai écrit quand j'étais moi-même débutant en programmation. J'ai essayé de le revisiter le plus légèrement possible afin de garder les formulations qui me paraissaient avoir du sens à l'époque, et qui je l'espère, parleront aux débutants.
 
 ## Table des matières
 
