@@ -196,7 +196,7 @@ On voit ici que les trois premiers cas ("chat", "chien" et "poisson" ) aboutiron
 
 ## (#boucles) Les boucles
 
-## Boucles while
+### Boucles while
 
 Les boucles permettent de répéter une instruction tant qu'une condition est vraie.
 
